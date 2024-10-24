@@ -45,18 +45,38 @@ searchButton.addEventListener('click', function(event) {
           console.log("Direct Video URL:", directVideoUrl); // Log del link diretto
 
           // Richiesta all'API di Vevioz per ottenere il link di download
-          getDownloadLink(directVideoUrl, 'mp3'); // Cambia 'mp3' in 'mp4' se necessario
-        })
-        .catch(error => {
-          console.error('Error fetching YouTube video:', error);
-          videoContainer.innerHTML = '<p>Failed to load YouTube video...</p>';
-        });
+          Copy code
+          function getDownloadLink(directVideoUrl, ftype) {
+  // Usa CORS Anywhere come proxy
+  const veviozApiUrl = `https://cors-anywhere.herokuapp.com/https://api.vevioz.com/apis/single/${ftype}?url=${directVideoUrl}`;
+
+  console.log("Vevioz API URL:", veviozApiUrl); // Log dell'URL dell'API Vevioz
+
+  fetch(veviozApiUrl)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to fetch download link');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log("Vevioz Response Data:", data); // Log della risposta dell'API
+      const downloadLink = document.createElement('a');
+      downloadLink.href = data.link; // Assicurati che la chiave 'link' sia corretta in base alla risposta dell'API
+      downloadLink.textContent = `Scarica ${ftype.toUpperCase()}`;
+      downloadLink.target = '_blank'; // Apri il link in una nuova scheda
+      downloadLink.classList.add('download-button'); // Aggiungi una classe per il pulsante
+      downloadContainer.innerHTML = ''; // Pulisci eventuali link precedenti
+      downloadContainer.appendChild(downloadLink);
+
+      // Imposta l'URL dell'iframe del pulsante API
+      buttonApi.src = `https://api.vevioz.com/apis/button/${ftype}?url=${directVideoUrl}`;
     })
     .catch(error => {
-      console.error('Error fetching lyrics:', error);
-      lyricsContainer.innerHTML = "<p>Strangely I can't find the lyrics... <br> Maybe you typed it wrong...</p>";
+      console.error('Error fetching download link:', error);
+      downloadContainer.innerHTML = '<p>Failed to retrieve download link...</p>';
     });
-});
+}
 
 // Funzione per ottenere il link di download usando l'API di Vevioz
 function getDownloadLink(directVideoUrl, ftype) {
