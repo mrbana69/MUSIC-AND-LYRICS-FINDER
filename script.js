@@ -32,6 +32,7 @@ searchButton.addEventListener('click', function(event) {
         .then(data => {
           const videoId = data.items[0].id.videoId;
           const videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+          const directVideoUrl = `https://youtube.com/watch?v=${videoId}`; // URL diretto per Vevioz
 
           // Crea l'elemento video e aggiungilo al contenitore video
           const videoElement = document.createElement('iframe');
@@ -42,7 +43,7 @@ searchButton.addEventListener('click', function(event) {
           videoContainer.appendChild(videoElement);
 
           // Richiesta all'API di Vevioz per ottenere il link di download
-          getDownloadLink(videoUrl, 'mp3'); // Cambia 'mp3' in 'mp4' se necessario
+          getDownloadLink(directVideoUrl, 'mp3'); // Cambia 'mp3' in 'mp4' se necessario
         })
         .catch(error => {
           console.error('Error fetching YouTube video:', error);
