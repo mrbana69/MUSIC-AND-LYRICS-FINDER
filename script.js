@@ -42,6 +42,8 @@ searchButton.addEventListener('click', function(event) {
           videoContainer.innerHTML = '';
           videoContainer.appendChild(videoElement);
 
+          console.log("Direct Video URL:", directVideoUrl); // Log del link diretto
+
           // Richiesta all'API di Vevioz per ottenere il link di download
           getDownloadLink(directVideoUrl, 'mp3'); // Cambia 'mp3' in 'mp4' se necessario
         })
@@ -60,6 +62,8 @@ searchButton.addEventListener('click', function(event) {
 function getDownloadLink(directVideoUrl, ftype) {
   const veviozApiUrl = `https://api.vevioz.com/apis/single/${ftype}?url=${directVideoUrl}`;
 
+  console.log("Vevioz API URL:", veviozApiUrl); // Log dell'URL dell'API Vevioz
+
   fetch(veviozApiUrl)
     .then(response => {
       if (!response.ok) {
@@ -68,6 +72,7 @@ function getDownloadLink(directVideoUrl, ftype) {
       return response.json();
     })
     .then(data => {
+      console.log("Vevioz Response Data:", data); // Log della risposta dell'API
       // Aggiungi il link di download al contenitore
       const downloadLink = document.createElement('a');
       downloadLink.href = data.link; // Assicurati che la chiave 'link' sia corretta in base alla risposta dell'API
