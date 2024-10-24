@@ -1,72 +1,87 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
     text-align: center;
-    background-color: #f7f7f7; /* Light gray background */
+    background-color: #e9ecef; /* Soft gray background */
+    margin: 0; /* Remove default margin */
+    padding: 20px; /* Add padding to the body */
 }
 
 h1 {
-    color: #4567b7; /* Primary color */
+    color: #4a90e2; /* Bright primary color */
     font-weight: bold;
-    margin-bottom: 20px;
+    font-size: 2.5rem; /* Increased font size for better impact */
+    margin-bottom: 30px; /* More space below the heading */
 }
 
 form {
     margin: 20px auto;
-    width: 50%;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    width: 90%; /* Responsive width */
+    max-width: 600px; /* Max width for larger screens */
+    padding: 30px; /* Increased padding for a spacious look */
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Deeper shadow effect */
+    background-color: #ffffff; /* White background for contrast */
 }
 
 input[type="text"] {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
+    padding: 12px; /* Increased padding for comfort */
+    margin: 15px 0; /* More space between inputs */
+    border: 1px solid #ced4da; /* Lighter border color */
     border-radius: 5px;
-    transition: border-color 0.3s ease; /* Smooth transition effect */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for shadow as well */
 }
 
 input[type="text"]:focus {
-    border-color: #4567b7; /* Primary color on focus */
-    box-shadow: 0 0 10px rgba(69, 103, 183, 0.5); /* Subtle shadow effect on focus */
+    border-color: #4a90e2; /* Primary color on focus */
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.5); /* Subtle shadow effect on focus */
 }
 
 form button[type="button"] {
-    text-decoration:none; 
-    text-align:center; 
-    padding:11px 32px; 
-    border:solid 1px #004F72; 
-    -webkit-border-radius:4px;
-    -moz-border-radius:4px; 
-    border-radius: 4px; 
-    font:18px "Lucida Sans Unicode", "Lucida Grande", sans-serif; 
-    font-weight:bold; 
+    background-color: #4a90e2; /* Primary button color */
+    color: white; /* White text for contrast */
+    text-decoration: none; 
+    text-align: center; 
+    padding: 12px 35px; 
+    border: none; /* Remove default border */
+    border-radius: 5px; 
+    font: 18px "Lucida Sans Unicode", "Lucida Grande", sans-serif; 
+    font-weight: bold; 
+    cursor: pointer; /* Pointer cursor for better UX */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transition effects */
 }
 
 form button[type="button"]:hover {
-    background-color: #3e8e41; /* Darker shade of the primary color on hover */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Increased shadow effect on hover */
+    background-color: #357ABD; /* Darker shade on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Increased shadow effect on hover */
+    transform: translateY(-2px); /* Subtle lift effect on hover */
 }
 
 #lyrics-container {
-    margin-top: 20px;
+    margin-top: 30px; /* More space above the lyrics container */
     padding: 20px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
+    border: 1px solid #dee2e6; /* Lighter border color */
+    background-color: #f8f9fa; /* Light background for the container */
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
 }
+
 #artwork-container {
-    width: 200px;
-    height: 200px;
-    margin: 20px;
+    width: 250px; /* Slightly larger artwork container */
+    height: 250px; /* Slightly larger height */
+    margin: 20px auto; /* Centered margin */
     border-radius: 10px;
     overflow: hidden;
+    border: 1px solid #ced4da; /* Light border */
 }
 
 #artwork-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease; /* Smooth image transition */
+}
+
+#artwork-container img:hover {
+    transform: scale(1.05); /* Zoom effect on hover */
 }
