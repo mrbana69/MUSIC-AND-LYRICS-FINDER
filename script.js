@@ -57,7 +57,7 @@ searchButton.addEventListener('click', function(event) {
 });
 
 // Funzione per ottenere il link di download usando l'API di Vevioz
-function getDownloadLink(videoUrl, ftype) {
+function getDownloadLink(directVideoUrl, ftype) {
   const veviozApiUrl = `https://api.vevioz.com/apis/single/${ftype}?url=${videoUrl}`;
 
   fetch(veviozApiUrl)
