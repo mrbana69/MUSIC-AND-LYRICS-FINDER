@@ -31,7 +31,7 @@ searchButton.addEventListener('click', function(event) {
         .then(response => response.json())
         .then(data => {
           const videoId = data.items[0].id.videoId;
-          const videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+          const videoUrl = `https://www.youtube.com/embed/${videoId}`; // URL per l'iframe
           const directVideoUrl = `https://youtube.com/watch?v=${videoId}`; // URL diretto per Vevioz
 
           // Crea l'elemento video e aggiungilo al contenitore video
