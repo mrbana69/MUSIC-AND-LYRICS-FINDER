@@ -1,8 +1,8 @@
 const searchButton = document.getElementById('search-button');
 const lyricsContainer = document.getElementById('lyrics-container');
-const videoContainer = document.getElementById('video-container'); // Aggiungi un nuovo contenitore per il video
-const downloadContainer = document.getElementById('download-container'); // Contenitore per i link di download
-const buttonApi = document.getElementById('buttonApi'); // iFrame del pulsante API
+const videoContainer = document.getElementById('video-container');
+const downloadContainer = document.getElementById('download-container');
+const buttonApi = document.getElementById('buttonApi');
 
 searchButton.addEventListener('click', function(event) {
   event.preventDefault(); // Previene il comportamento predefinito di invio del modulo
@@ -70,8 +70,9 @@ function getDownloadLink(videoUrl, ftype) {
       // Aggiungi il link di download al contenitore
       const downloadLink = document.createElement('a');
       downloadLink.href = data.link; // Assicurati che la chiave 'link' sia corretta in base alla risposta dell'API
-      downloadLink.textContent = `Download ${ftype.toUpperCase()}`;
+      downloadLink.textContent = `Scarica ${ftype.toUpperCase()}`;
       downloadLink.target = '_blank'; // Apri il link in una nuova scheda
+      downloadLink.classList.add('download-button'); // Aggiungi una classe per il pulsante
       downloadContainer.innerHTML = ''; // Pulisci eventuali link precedenti
       downloadContainer.appendChild(downloadLink);
 
