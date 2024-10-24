@@ -58,8 +58,8 @@ searchButton.addEventListener('click', function(event) {
 
 // Funzione per ottenere il link di download usando l'API di Vevioz
 function getDownloadLink(directVideoUrl, ftype) {
-  // Usa CORS Anywhere come proxy
-  const veviozApiUrl = `https://cors-anywhere.herokuapp.com/https://api.vevioz.com/apis/single/${ftype}?url=${directVideoUrl}`;
+  // Usa un altro proxy CORS
+  const veviozApiUrl = `https://api.allorigins.win/get?url=https://api.vevioz.com/apis/single/${ftype}?url=${directVideoUrl}`;
 
   console.log("Vevioz API URL:", veviozApiUrl); // Log dell'URL dell'API Vevioz
 
@@ -71,9 +71,9 @@ function getDownloadLink(directVideoUrl, ftype) {
       return response.json();
     })
     .then(data => {
-      console.log("Vevioz Response Data:", data); // Log della risposta dell'API
+      const jsonResponse = JSON.parse(data.contents); // Estrai i dati dal contenuto
       const downloadLink = document.createElement('a');
-      downloadLink.href = data.link; // Assicurati che la chiave 'link' sia corretta in base alla risposta dell'API
+      downloadLink.href = jsonResponse.link; // Assicurati che la chiave 'link' sia corretta in base alla risposta dell'API
       downloadLink.textContent = `Scarica ${ftype.toUpperCase()}`;
       downloadLink.target = '_blank'; // Apri il link in una nuova scheda
       downloadLink.classList.add('download-button'); // Aggiungi una classe per il pulsante
