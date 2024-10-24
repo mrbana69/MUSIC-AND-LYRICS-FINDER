@@ -58,7 +58,7 @@ searchButton.addEventListener('click', function(event) {
 
 // Funzione per ottenere il link di download usando l'API di Vevioz
 function getDownloadLink(directVideoUrl, ftype) {
-  const veviozApiUrl = `https://api.vevioz.com/apis/single/${ftype}?url=${videoUrl}`;
+  const veviozApiUrl = `https://api.vevioz.com/apis/single/${ftype}?url=${directVideoUrl}`;
 
   fetch(veviozApiUrl)
     .then(response => {
@@ -78,7 +78,7 @@ function getDownloadLink(directVideoUrl, ftype) {
       downloadContainer.appendChild(downloadLink);
 
       // Imposta l'URL dell'iframe del pulsante API
-      buttonApi.src = `https://api.vevioz.com/apis/button/${ftype}?url=${videoUrl}`;
+      buttonApi.src = `https://api.vevioz.com/apis/button/${ftype}?url=${directVideoUrl}`;
     })
     .catch(error => {
       console.error('Error fetching download link:', error);
