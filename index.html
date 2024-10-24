@@ -1,27 +1,38 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>LYRICS AND MUSIC PLAYER</title>
     <link rel="stylesheet" href="styling.css">
-    
+    <style>
+        /* Stili specifici per migliorare l'aspetto */
+        h1 {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">TROVA TESTO CANZONI E ASCOLTA MUSICA!</h1>
+    <h1>TROVA TESTO CANZONI E ASCOLTA MUSICA!</h1>
     <form>
-        <input type="text" id="song-title" placeholder="Song Title">
-        <input type="text" id="artist-name" placeholder="Artist Name">
-        <button id="search-button">Cerca canzone e testo</button>
-        <div id="video-container"></div>
-        <div id="lyrics-container"></div>
-        <div id="artwork-container"></div>
+        <input type="text" id="song-title" placeholder="Titolo della canzone" aria-label="Titolo della canzone">
+        <input type="text" id="artist-name" placeholder="Nome dell'artista" aria-label="Nome dell'artista">
+        <button type="submit" id="search-button">Cerca canzone e testo</button>
     </form>
+    
+    <div id="video-container"></div>
+    <div id="lyrics-container"></div>
+    <div id="artwork-container"></div>
+    <div id="download-container"></div>
+    <div id="button-container">
+        <iframe id="buttonApi" src="" width="100%" height="100%" allowtransparency="true" scrolling="no" style="border:none"></iframe>
+    </div>
 
     <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.min.js"></script>
-    <script>iFrameResize({ log: false }, '#buttonApi')</script>
+    <script>
+        iFrameResize({ log: false }, '#buttonApi');
+    </script>
 </body>
 </html>
